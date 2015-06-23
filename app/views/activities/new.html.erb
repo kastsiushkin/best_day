@@ -1,0 +1,12 @@
+<h1>Add Activity</h1>
+
+<%= simple_form_for @activity do |f| %>
+  <%= f.input :name, label: "Name", placeholder: "Hike Kalalau trail" %>
+  <%= f.input :description, placeholder: "We hiked, took pictures, chilled on the beach 2 miles in" %>
+  <%= f.input :address, placeholder: "Kalalau Trail Kapaa, HI 96746" %>
+  <%= f.input :time, as: :time, placeholder: "Kalalau Trail Kapaa, HI 96746" %>
+  <%= f.input :cost, label: "Cost ($)", placeholder: "10" %>
+  <%= f.input :hardness, collection: 1..5, as: :select, prompt: "Select Hardness" %>
+  <%= f.input :duration, label: "Duration (hours)", placeholder: "1.5" %>
+  <%= f.submit value: "Add Activity", class: "btn btn-primary" %>
+<% end %>
