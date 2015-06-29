@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   # Resources
   resources :activities, only: [:new, :new, :create, :edit, :update, :destroy]
-  
+  resources :days
+
 end

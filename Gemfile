@@ -17,6 +17,8 @@ gem "font-awesome-rails"
 gem 'simple_form'
 gem 'devise'
 gem 'annotate'
+gem "animate-rails"
+gem 'wow-rails'
 
 group :development, :test do
   gem 'pry-byebug'

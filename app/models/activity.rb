@@ -16,5 +16,7 @@
 #
 
 class Activity < ActiveRecord::Base
+  belongs_to :day
+
   validates_presence_of :name, :description, :address, :time, :cost, :hardness, :duration, :day_id
 end
