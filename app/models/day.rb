@@ -14,4 +14,8 @@ class Day < ActiveRecord::Base
   has_many :activities
 
   validates_presence_of :name, :description, :location
+
+  def self.search(query)
+    where('location like ?', "%#{query}%")
+  end
 end

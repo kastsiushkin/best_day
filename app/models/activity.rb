@@ -18,5 +18,10 @@
 class Activity < ActiveRecord::Base
   belongs_to :day
 
-  validates_presence_of :name, :description, :address, :time, :cost, :hardness, :duration, :day_id
+  validates_presence_of :name, :address, :time, :duration, :day_id
+
+  def finish_time
+    self.time + self.duration * 60 * 60
+  end
+
 end

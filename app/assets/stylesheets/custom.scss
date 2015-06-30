@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  padding-top: 51px;
+}
+
+.home > .navbar-inverse {
+  background-color: rgba(0,0,0,0.3);
+  border: none;
+}
+
+.home > .navbar-inverse a,
+.home > .navbar-inverse li > a {
+  color: #eee;
+}
