@@ -21,6 +21,8 @@ gem "animate-rails"
 gem 'wow-rails'
 gem 'underscore-rails'
 gem 'gmaps4rails'
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -1,6 +1,6 @@
 <%= simple_form_for @day do |f| %>
   <%= f.input :name, label: "Name", placeholder: "Best day on Kauai" %>
   <%= f.input :description, placeholder: "Active day on Kauai" %>
-  <%= f.input :location, placeholder: "Kalalau Trail Kapaa, HI 96746" %>
+  <%= f.input :location, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place...' %>
   <%= f.submit btn_label, class: "btn btn-primary" %>
 <% end %>
