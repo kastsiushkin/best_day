@@ -1,27 +1,31 @@
 <section>
   <div class="container">
-    <div class="row">
 
+    <div class="row">
       <div class="col-lg-12 text-center">
         <h1>Browse Days</h1>
       </div>
 
       <div>
         <% @days.each do |day| %>
-          <div class="col-xs-12 col-sm-4 col-md-3">
-            <div class="thumbnail">
-              <div class="caption">
-                <h4><%= day.name %></h4>
-                <p><%= day.description %></p>
-                <p>
-                  <%= link_to "View", day_path(day.id), class: "btn btn-primary btn-block" %>
-                </p>
-              </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h4><%= day.name %></h4>
+              <p><%= day.description %></p>
+              <p>
+                <%= link_to "View", day_path(day.id), class: "btn btn-primary btn-block" %>
+              </p>
             </div>
           </div>
+        </div>
         <% end %>
       </div>
-
     </div>
+
+    <div class="row col-md-12">
+      <%= link_to "Add New", new_day_path, class: "btn btn-primary" %>
+    </div>
+
   </div>
 </section>
