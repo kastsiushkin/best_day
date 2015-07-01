@@ -19,6 +19,8 @@ gem 'devise'
 gem 'annotate'
 gem "animate-rails"
 gem 'wow-rails'
+gem 'underscore-rails'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'pry-byebug'

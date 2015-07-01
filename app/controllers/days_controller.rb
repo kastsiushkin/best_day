@@ -24,6 +24,7 @@ class DaysController < ApplicationController
   end
 
   def show
+    @activities = @day.activities.order(:time)
   end
 
   def edit

@@ -1,29 +1,47 @@
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
+      <div class="col-md-12 text-center">
         <h1> <%= @day.name %></h1>
       </div>
-      <div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
         <p> <%= @day.description %></p>
-        <ul>
-          <% @day.activities.each do |activity| %>
-          <%= link_to edit_day_activity_path(@day, activity) do %>
-          <li class="list-unstyled">
-            <span class="badge">
-              <%= activity.time.strftime("%I:%M %p") %> -
-              <%= activity.finish_time.strftime("%I:%M %p") %></span>
-              <%= activity.name %>
-              <i class="fa fa-pencil"></i>
-            </li>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <% @activities.each_with_index do |activity, index| %>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading<%= index %>">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>" aria-expanded="false" aria-controls="collapseOne">
+                    <%= activity.name %>
+                  </a>
+                  <%= link_to "Edit", edit_day_activity_path(@day, activity), class: "pull-right" %>
+                </h4>
+              </div>
+              <div id="collapse<%= index %>" class="panel-collapse collapse <%= "in" if index == 0 %>" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <%= activity.description %>
+                  <input type="hidden" class="address" value="<%= activity.address %>">
+                </div>
+              </div>
+            </div>
             <% end %>
-            <% end %>
-          </ul>
+          </div>
+
+
 
           <%= link_to "Add Activity", new_day_activity_path(@day), class: "btn btn-primary" %>
         </div>
+
+        <div class="col-md-6">
+          <div id="map" style='height: 400px;'></div>
+          <p id="location"> <%= @day.location %></p>
+        </div>
+
       </div>
     </div>
   </section>
-  
