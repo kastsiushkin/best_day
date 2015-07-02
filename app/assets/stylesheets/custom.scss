@@ -5,12 +5,19 @@ body {
   padding-top: 51px;
 }
 
+.alerts {
+  position: absolute;
+  top: 170px;
+  z-index: 1;
+}
+
 .home > .navbar-inverse {
   background-color: rgba(0,0,0,0.3);
   border: none;
 }
 
-.home > .navbar-inverse a,
+.home > .navbar-inverse .navbar-brand,
+.home > .navbar-inverse p,
 .home > .navbar-inverse li > a {
   color: #eee;
 }
