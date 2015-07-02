@@ -14,7 +14,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background: url(background_1.jpg) bottom center;
+    background: url(https://s3-us-west-1.amazonaws.com/bestapp/images/background_1.jpg) bottom center;
     background-size: cover;
 }
 
@@ -49,7 +49,7 @@ header .parallax {
   position: absolute;
   top: 0;
   left: 0;
-  background: url(birds.png) right 50px no-repeat;
+  background: url(https://s3-us-west-1.amazonaws.com/bestapp/images/birds.png) right 50px no-repeat;
 }
 
 #about {
