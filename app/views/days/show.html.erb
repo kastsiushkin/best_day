@@ -18,11 +18,13 @@
                   <%= activity.time.strftime("%I:%M %p") %> - <%= activity.name %>
                 </a>
                 <div class="pull-right">
-                  <%= link_to edit_day_activity_path(@day, activity), class: "" do %>
-                    <i class="fa fa-pencil text-primary"></i>
-                  <% end %>
-                  <%= link_to day_activity_path(@day, activity), method: :delete, data: { confirm: "You sure?" } do %>
-                    <i class="fa fa-remove text-danger"></i>
+                  <% if user_signed_in? %>
+                    <%= link_to edit_day_activity_path(@day, activity), class: "" do %>
+                      <i class="fa fa-pencil text-primary"></i>
+                    <% end %>
+                    <%= link_to day_activity_path(@day, activity), method: :delete, data: { confirm: "You sure?" } do %>
+                      <i class="fa fa-remove text-danger"></i>
+                    <% end %>
                   <% end %>
                 </div>
               </h4>
@@ -52,9 +54,11 @@
           <% end %>
         </div>
         <%= link_to "Back", days_path, class: "btn btn-default" %>
-        <%= link_to "Edit Day", edit_day_path(@day), class: "btn btn-primary" %>
-        <%= link_to "Add Activity", new_day_activity_path(@day), class: "btn btn-primary" %>
-        <%= link_to "Delete This Day", @day, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% if user_signed_in? %>
+          <%= link_to "Edit Day", edit_day_path(@day), class: "btn btn-primary" %>
+          <%= link_to "Add Activity", new_day_activity_path(@day), class: "btn btn-primary" %>
+          <%= link_to "Delete This Day", @day, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% end %>
       </div>
 
       <div class="col-md-6">

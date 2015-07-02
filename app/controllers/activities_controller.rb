@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
 
   before_action :get_day, only: [:new, :create, :edit, :update, :destroy]
+  #before_action :authenticate_user!
 
   def new
     @activity = @day.activities.new
