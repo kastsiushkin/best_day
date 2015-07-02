@@ -22,6 +22,7 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'jquery-ui-rails'
 gem 'gmaps-autocomplete-rails'
+gem 'puma'
 
 gem 'rails_12factor', group: :production
 
