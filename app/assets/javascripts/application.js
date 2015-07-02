@@ -18,6 +18,5 @@
 //= require jquery-readyselector
 //= require jquery-ui
 //= require gmaps-auto-complete
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
