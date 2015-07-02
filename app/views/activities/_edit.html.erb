@@ -5,6 +5,7 @@
   <%= f.input :duration, label: "Duration (hours)", placeholder: "1.5" %>
   <%= f.input :description, placeholder: "We hiked, took pictures, chilled on the beach 2 miles in" %>
   <%= f.input :cost, label: "Cost ($)", placeholder: "10" %>
-  <%= f.input :hardness, collection: 1..5, as: :select, prompt: "Select Hardness" %>
+  <%= f.input :hardness, collection: 0..5, as: :select, prompt: "Select Hardness" %>
+  <%= link_to "Back", day_path(@day), class: "btn btn-default" %>
   <%= f.submit btn_label, class: "btn btn-primary" %>
 <% end %>

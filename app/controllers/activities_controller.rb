@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
 
-  before_action :get_day, only: [:new, :create, :edit, :update]
+  before_action :get_day, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @activity = @day.activities.new
@@ -23,13 +23,17 @@ class ActivitiesController < ApplicationController
   def update
     @activity = get_activity
     if @activity.update_attributes(activity_params)
-      redirect_to day_path(@day)
+      redirect_to day_path(@day), notice: "Activity was updated"
     else
       render "edit"
     end
   end
 
-  def delete
+  def destroy
+    @activity = get_activity
+    @activity.destroy
+    flash.notice = "Activity was deleted"
+    redirect_to(:back)
   end
 
   private

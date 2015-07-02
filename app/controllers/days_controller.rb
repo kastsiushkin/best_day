@@ -1,6 +1,6 @@
 class DaysController < ApplicationController
 
-  before_action :get_day, only: [:show, :edit]
+  before_action :get_day, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:search]
@@ -28,6 +28,20 @@ class DaysController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @day.update_attributes(day_params)
+      redirect_to day_path(@day), notice: "Day was updated"
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @day.destroy
+    flash.notice = "Day was deleted"
+    redirect_to days_path
   end
 
   private

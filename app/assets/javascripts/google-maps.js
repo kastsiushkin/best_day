@@ -21,7 +21,9 @@ function renderDirections() {
     })
     if ( locations.length ) {
       start = locations[0];
+      end = locations[1] || locations[0];
     } else {
+      renderMap();
       start = end = $('#location').text();
     }
     if ( locations.length > 2 ) {
@@ -52,10 +54,8 @@ function renderMap() {
   if($(".days.show").length) {
     var map;
     var geocoder = new google.maps.Geocoder();
-    var address = document.getElementById("start-location").innerHTML;
-    console.log(address);
+    var address = document.getElementById("location").innerHTML;
     geocoder.geocode( { 'address': address}, function(results, status) {
-      console.log(results, status)
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng = new google.maps.LatLng(results[0].geometry.location.k, results[0].geometry.location.D);
         var mapOptions = {

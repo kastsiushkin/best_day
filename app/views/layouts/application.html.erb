@@ -5,11 +5,21 @@
   <script type="text/javascript" src="//maps.google.com/maps/api/js?v=3.13&amp;key=AIzaSyAvtDBy64d_40bH-WaUTbjkXWM0Uo12EEo&amp;sensor=false&amp;libraries=geometry"></script>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 
 <body class="<%= controller_name %> <%= controller.action_name %>">
+
+  <div class="container">
+    <div class="row col-md-4 col-md-offset-3">
+      <% flash.each do |key, value| %>
+      <div class="alert alert-dismissible alert-info alert-<%= key %>">
+        <%= value %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
   <%= render 'shared/primary_nav' %>
 
