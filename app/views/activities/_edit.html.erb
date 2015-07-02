@@ -1,6 +1,6 @@
 <%= simple_form_for @activity, :url => day_activity_path(@day, @activity) do |f| %>
   <%= f.input :name, label: "Name", placeholder: "Hike Kalalau trail" %>
-  <%= f.input :address, placeholder: "Kalalau Trail Kapaa, HI 96746" %>
+  <%= f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place...' %>
   <%= f.input :time, as: :time, input_html: { min: '0', step: 15 } %>
   <%= f.input :duration, label: "Duration (hours)", placeholder: "1.5" %>
   <%= f.input :description, placeholder: "We hiked, took pictures, chilled on the beach 2 miles in" %>

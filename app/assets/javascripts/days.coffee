@@ -6,9 +6,9 @@ jQuery ->
         inputField: '#gmaps-input-address'
         errorField: '#gmaps-error'
         debugOn: false
-        zoomLevel: 2
-        mapType: google.maps.MapTypeId.ROADMAP
-        pos: [0,0]
+        zoomLevel: 2,
+        mapType: google.maps.MapTypeId.ROADMAP,
+        pos: [37.7833, -122.4167],
 
     completer.autoCompleteInit
         country: "us"
