@@ -16,10 +16,9 @@
               <%= link_to "View", day_path(day.id), class: "btn btn-primary btn-block" %>
             </p>
             <p>
-                <% if day.user %>
-                  <small>By: <%= day.user.email %></small>
-                <% end %>
-
+              <% if day.user %>
+                <small>By: <b><%= day.user.username %></b></small>
+              <% end %>
             </p>
           </div>
         </div>
@@ -27,7 +26,7 @@
       <% end %>
     </div>
 
-    <div class="row col-md-12">
+    <div class="row col-md-12 text-center">
       <%= link_to "Add New", new_day_path, class: "btn btn-primary" %>
     </div>
 

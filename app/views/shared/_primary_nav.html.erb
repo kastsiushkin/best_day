@@ -17,8 +17,21 @@
         <li> <%= link_to "Days", days_path %> </li>
       </ul>
 
+      <% if controller_name == 'days' %>
+      <%= form_tag(days_path, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], :autofocus => true, placeholder: "San Francisco", class: "form-control" %>
+          <span class="input-group-btn">
+            <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+            <i class="fa fa-search"></i>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+      <% end %>
+
       <% if user_signed_in? %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-sm navbar-right navbar-btn" %> 
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-sm navbar-right navbar-btn" %>
       <p class="navbar-text navbar-right">
         Signed in as <i><%= current_user.email %></i>
       </p>

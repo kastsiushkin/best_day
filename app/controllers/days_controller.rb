@@ -1,8 +1,8 @@
 class DaysController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :get_user, only: [:new, :create, :edit]
   before_action :get_day, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     if params[:search]

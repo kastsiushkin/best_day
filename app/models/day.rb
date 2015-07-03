@@ -18,7 +18,12 @@ class Day < ActiveRecord::Base
   validates_presence_of :name, :description, :location, :user_id
 
   def self.search(query)
-    where('location like ?', "%#{query}%")
+    query = query.downcase
+    where('LOWER(location) like ?', "%#{query}%")
+  end
+
+  def total_cost
+    
   end
 
 end
