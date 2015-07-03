@@ -1,6 +1,8 @@
 class DaysController < ApplicationController
 
+  before_action :get_user, only: [:new, :create, :edit]
   before_action :get_day, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     if params[:search]
@@ -11,11 +13,12 @@ class DaysController < ApplicationController
   end
 
   def new
-    @day = Day.new
+    @day = @user.days.new
+    @day.user_id = @user.id
   end
 
   def create
-    @day = Day.create(day_params)
+    @day = @user.days.create(day_params)
     if @day.save
       redirect_to day_path(@day)
     else
@@ -44,9 +47,17 @@ class DaysController < ApplicationController
     redirect_to days_path
   end
 
+  def owner?
+    current_user.id == self.user.id
+  end
+
   private
   def day_params
-    params.require(:day).permit(:name, :description, :location)
+    params.require(:day).permit(:name, :description, :location, :user_id)
+  end
+
+  def get_user
+    @user = User.find(current_user.id)
   end
 
   def get_day

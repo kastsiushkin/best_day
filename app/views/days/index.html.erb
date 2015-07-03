@@ -15,6 +15,12 @@
             <p>
               <%= link_to "View", day_path(day.id), class: "btn btn-primary btn-block" %>
             </p>
+            <p>
+                <% if day.user %>
+                  <small>By: <%= day.user.email %></small>
+                <% end %>
+
+            </p>
           </div>
         </div>
       </div>
