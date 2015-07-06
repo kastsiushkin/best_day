@@ -20,17 +20,17 @@
       </ul>
 
       <% if controller_name == 'days' %>
-      <%= link_to "Add My Day", new_day_path, class: "btn btn-primary btn-sm navbar-btn" %>
-      <%= form_tag(days_path, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
-        <div class="input-group">
-          <%= text_field_tag :search, params[:search], :autofocus => true, placeholder: "San Francisco", class: "form-control" %>
-          <span class="input-group-btn">
-            <%= button_tag(type: 'submit', class: "btn btn-default") do %>
-            <i class="fa fa-search"></i>
-            <% end %>
-          </span>
-        </div>
-      <% end %>
+        <%= form_tag(days_path, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], :autofocus => true, placeholder: "San Francisco", class: "form-control" %>
+            <span class="input-group-btn">
+              <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+              <i class="fa fa-search"></i>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+        <%= link_to "Add My Day", new_day_path, class: "btn btn-primary btn-sm navbar-btn navbar-left" %>
       <% end %>
 
       <% if user_signed_in? %>
