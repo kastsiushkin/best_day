@@ -1,6 +1,6 @@
-<% (0...rating).each do  %>
+<% (0...rating.to_i).each do  %>
   <i class="fa fa-star text-primary"></i>
 <% end %>
-<% (rating...5).each do  %>
+<% (rating.to_i...5).each do  %>
   <i class="fa fa-star-o text-primary"></i>
 <% end %>

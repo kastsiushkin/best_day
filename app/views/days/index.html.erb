@@ -18,6 +18,9 @@
             <p>
               <i class="fa fa-usd text-success"></i><%= day.total_cost %>
               <i class="fa fa-clock-o text-primary"></i><%= day.total_time %>h
+              <% if not day.reviews.empty? %>
+                <i class="fa fa-star text-primary"></i><%= day.average_rating %>/5
+              <% end %>
             </p>
             <p>
               <% if day.user %>

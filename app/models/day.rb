@@ -36,7 +36,7 @@ class Day < ActiveRecord::Base
   end
 
   def average_rating
-    self.reviews.inject(0) { |sum, review| sum + review.rating } / self.reviews.count
+    self.reviews.inject(0) { |sum, review| sum + review.rating } / self.reviews.count.to_f
   end
 
 end
