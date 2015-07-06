@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Resources
   resources :days do
     resources :activities
+    resources :reviews, only: [:new, :create]
   end
 
 end

@@ -13,6 +13,7 @@
 
 class Day < ActiveRecord::Base
   has_many :activities, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :user
 
   validates_presence_of :name, :description, :location, :user_id
@@ -28,6 +29,10 @@ class Day < ActiveRecord::Base
 
   def average_difficulty
     self.activities.inject(0) { |sum, activity| sum + (activity.hardness || 0) } / self.activities.count
+  end
+
+  def average_rating
+    self.reviews.inject(0) { |sum, review| sum + review.rating } / self.reviews.count
   end
 
 end

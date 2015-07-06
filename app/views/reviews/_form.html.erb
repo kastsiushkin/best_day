@@ -1,0 +1,7 @@
+<%= simple_form_for @review, :url => day_reviews_path do |f| %>
+  <%= f.input :rating, collection: 1..5, as: :select, prompt: "Select Rating" %>
+  <%= f.input :description, placeholder: "Active day on Kauai" %>
+  <%= f.input :user_id, as: :hidden %>
+  <%= link_to "Back", days_path, class: "btn btn-default" %>
+  <%= f.submit btn_label, class: "btn btn-primary" %>
+<% end %>

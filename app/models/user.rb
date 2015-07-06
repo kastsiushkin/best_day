@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string
 #
 
 class User < ActiveRecord::Base
@@ -24,4 +25,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :days
+  has_many :reviews, dependent: :destroy
+
+  def reviewed?(day)
+    found = false
+    self.reviews.each do |review|
+      found = true if review.day_id = id
+    end
+  end
 end

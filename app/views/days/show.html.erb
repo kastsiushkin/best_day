@@ -9,8 +9,13 @@
     <div class="row">
       <div class="col-md-6">
         <p> <%= @day.description %></p>
-        <p><b>Cost:</b> <%= number_to_currency(@day.total_cost) %></p>
-        <p><b>Difficulty:</b> <%= @day.average_difficulty %></p>
+        <% if not @day.activities.empty? %>
+          <p><b>Cost:</b> <%= number_to_currency(@day.total_cost) %></p>
+          <p><b>Difficulty:</b> <%= render "rating", rating: @day.average_difficulty %></p>
+        <% end %>
+        <% if not @day.reviews.empty? %>
+          <p><b>Rating:</b> <%= render "rating", rating: @day.average_rating %></p>
+        <% end %>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <% @activities.each_with_index do |activity, index| %>
           <div class="panel panel-default">
@@ -63,6 +68,8 @@
           <%= link_to "Edit Day", edit_day_path(@day), class: "btn btn-primary" %>
           <%= link_to "Add Activity", new_day_activity_path(@day), class: "btn btn-primary" %>
           <%= link_to "Delete This Day", @day, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% elsif user_signed_in? && current_user.id != @day.user.id && !@day.user.reviewed?(@day) %>
+          <%= link_to "Add Review", new_day_review_path(@day), class: "btn btn-primary" %>
         <% end %>
       </div>
 
@@ -71,6 +78,22 @@
         <p id="location"> <%= @day.location %></p>
       </div>
 
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Reviews:</h3>
+        <% if not @day.reviews.empty? %>
+          <% @day.reviews.each do |review| %>
+            <%= review.description %><br />
+            <%= render "rating", rating: review.rating %><br />
+            <small>Author: <b><%= review.user.username %></b></small>
+            <hr>
+          <% end %>
+        <% else %>
+          <p>No reviews yet</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
