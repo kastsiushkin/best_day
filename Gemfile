@@ -25,6 +25,7 @@ gem 'jquery-ui-rails'
 gem 'gmaps-autocomplete-rails'
 gem 'puma'
 gem 'devise'
+gem 'social-share-button'
 
 gem 'rails_serve_static_assets'
 gem 'rails_12factor', group: :production

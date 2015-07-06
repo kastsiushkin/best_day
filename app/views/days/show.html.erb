@@ -9,6 +9,8 @@
     <div class="row">
       <div class="col-md-6">
         <p> <%= @day.description %></p>
+        <p><b>Cost:</b> <%= number_to_currency(@day.total_cost) %></p>
+        <p><b>Difficulty:</b> <%= @day.average_difficulty %></p>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <% @activities.each_with_index do |activity, index| %>
           <div class="panel panel-default">
@@ -53,6 +55,9 @@
           </div>
           <% end %>
         </div>
+        <p>
+          <%= social_share_button_tag( @day.name, desc: "The summary of page", :popup => "true") %>
+        </p>
         <%= link_to "Back", days_path, class: "btn btn-default" %>
         <% if user_signed_in? && current_user.id == @day.user.id %>
           <%= link_to "Edit Day", edit_day_path(@day), class: "btn btn-primary" %>

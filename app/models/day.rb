@@ -23,7 +23,11 @@ class Day < ActiveRecord::Base
   end
 
   def total_cost
-    
+    self.activities.inject(0) { |total, activity| total + activity.cost }
+  end
+
+  def average_difficulty
+    self.activities.inject(0) { |sum, activity| sum + (activity.hardness || 0) } / self.activities.count
   end
 
 end

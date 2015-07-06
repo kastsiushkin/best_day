@@ -18,5 +18,6 @@
 //= require jquery-readyselector
 //= require jquery-ui
 //= require gmaps-auto-complete
+//= require social-share-button
 //= require bootstrap-sprockets
 //= require_tree .
