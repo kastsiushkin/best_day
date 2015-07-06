@@ -23,6 +23,10 @@ class Day < ActiveRecord::Base
     where('LOWER(location) like ?', "%#{query}%")
   end
 
+  def total_time
+    self.activities.inject(0) { |sum, activity| sum + activity.duration}
+  end
+
   def total_cost
     self.activities.inject(0) { |total, activity| total + activity.cost }
   end

@@ -16,6 +16,10 @@
               <%= link_to "View", day_path(day.id), class: "btn btn-primary btn-block" %>
             </p>
             <p>
+              <i class="fa fa-usd text-success"></i><%= day.total_cost %>
+              <i class="fa fa-clock-o text-primary"></i><%= day.total_time %>h
+            </p>
+            <p>
               <% if day.user %>
                 <small>By: <b><%= day.user.username %></b></small>
               <% end %>
